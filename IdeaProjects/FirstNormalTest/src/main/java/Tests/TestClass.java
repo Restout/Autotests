@@ -2,15 +2,9 @@ package Tests;
 
 import Pages.LoginPage;
 import Pages.MainPage;
-import com.sun.tools.javac.Main;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import Users.User;
+import ValueObjects.User;
 
 public class TestClass {
     @Test

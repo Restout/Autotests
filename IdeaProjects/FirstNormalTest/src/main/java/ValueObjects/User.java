@@ -1,4 +1,4 @@
-package Users;
+package ValueObjects;
 
 public class User{
     private String Ulogin ;

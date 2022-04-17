@@ -1,6 +1,6 @@
 package Pages;
 
-import Users.User;
+import ValueObjects.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

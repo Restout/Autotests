@@ -1,7 +1,7 @@
 package Tests;
 
 import Pages.LoginPage;
-import Users.User;
+import ValueObjects.User;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 

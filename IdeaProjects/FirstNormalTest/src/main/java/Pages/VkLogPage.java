@@ -1,14 +1,12 @@
 package Pages;
 
-import Users.User;
-import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.Alert;
+import ValueObjects.User;
+import com.google.common.base.Preconditions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.LoadableComponent;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.Set;
 
 public class VkLogPage extends LoadableComponent<VkLogPage> {
 
@@ -37,13 +35,15 @@ private String xpath;
     protected void isLoaded() throws Error {
 
     }
-    public MainPage LogIn(User user, WebDriver driver){
-        driver.switchTo().window("https://connect.vk.com/auth?app_id=7525058&uuid=ku0E9qPfe4IRwW5KDFhjF&origin=https%3A%2F%2Fok.ru&v=0.0.2");
-        WebElement element=driver.findElement(By.xpath(Page_Elements.TextElement.xpath));
-        driver.switchTo().frame(element);
+    public void switchToWindow(int number, WebDriver driver) {
 
-        //ChromeDriver driver=new ChromeDriver();
-        //driver.get("https://connect.vk.com/auth?app_id=7525058&uuid=bf7TALzu-Tye4lbKOXvY-&origin=https%3A%2F%2Fok.ru&v=0.0.2");
+        Set<String> windowHandles = driver.getWindowHandles();
+        Preconditions.checkState(windowHandles.size() >= number, "Window handles set too small");
+        String handle = windowHandles.toArray()[number].toString();
+        driver.switchTo().window(handle);
+    }
+    public MainPage LogIn(User user, WebDriver driver){
+       switchToWindow(1,driver);
         driver.findElement(By.xpath(Page_Elements.TextField.xpath)).sendKeys(user.GetUlogin());
         return new MainPage();
     }
