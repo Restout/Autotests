@@ -29,7 +29,9 @@ public class MusicPage {
     public void CheckAddedTrack(){
         Music AddMusic=MusicElement.AddTrack();
         MyMusicPageElement MyMusic=MusicElement.OpenMyMusic();
-        List<Music> MyMusicList=MusicElement.OpenMyMusic().GetAllTracks();
+        List<Music> MyMusicList=MusicElement
+                .OpenMyMusic()
+                .GetAllTracks();
             assert AddMusic.equals(MyMusicList.get(0));
 
     }

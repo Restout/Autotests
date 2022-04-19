@@ -26,38 +26,36 @@ public class MusicPageELement {
 return new MyMusicPageElement(driver);
     }
 
+
     public List<Music> GetAllTracks(){
 List<Music> MusicList=new ArrayList<Music>();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
-List<WebElement> AllMusicTitles= musicElement.findElements(By.xpath("//*[contains(@data-l,\"t,title\")]"));
-List<WebElement>AllMusicAuthors=musicElement.findElements(By.xpath("//top-tracks-list//*[contains(@data-l,\"t,artist\")]"));
-List<WebElement>AllMusicDuration=musicElement.findElements(By.xpath("//top-tracks-list//*[contains(@class,\"duration\")]"));
-            for (int i=0;i<AllMusicTitles.stream().count();i++)
-            {
+        List<WebElement> AllMusicTitles= musicElement.findElements(By.xpath("//*[contains(@data-l,\"t,title\")]"));
+        List<WebElement>AllMusicAuthors=musicElement.findElements(By.xpath("//top-tracks-list//*[contains(@data-l,\"t,artist\")]"));
+        List<WebElement>AllMusicDuration=musicElement.findElements(By.xpath("//top-tracks-list//*[contains(@class,\"duration\")]"));
+        for (int i=0;i<AllMusicTitles.size();i++)
+        {
 
-               // if(AllMusicTitles.get(i).findElement(By.xpath("//*[contains(@title,\"не предназначенную для несовершеннолетних\")]"))!=null){
-//MusicList.add(new Music(AllMusicTitles.get(i).getText(),AllMusicAuthors.get(i).getText(),AllMusicDuration.get(i).getText(),true));
-             //   }else
-                    MusicList.add(new Music(AllMusicTitles.get(i).getText(),AllMusicAuthors.get(i).getText(),AllMusicDuration.get(i).getText()));
-            }
+            //if(AllMusicTitles.get(i).findElement(By.xpath("//*[contains(@title,\"не предназначенную для несовершеннолетних\")]")).isDisplayed()){
+            //  MusicList.add(new Music(AllMusicTitles.get(i).getText(),AllMusicAuthors.get(i).getText(),AllMusicDuration.get(i).getText(),true));
+            // }else
+            MusicList.add(new Music(AllMusicTitles.get(i).getText(),AllMusicAuthors.get(i).getText(),AllMusicDuration.get(i).getText()));
+        }
         return MusicList;
         }
 
         public Music AddTrack(){
 
             driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+            List<Music> PopMusic=GetAllTracks();
             WebElement x =musicElement.findElement(By.xpath("//*[@data-tsid=\"track\"]"));
             Actions actionMouse=new Actions(driver);
             actionMouse.moveToElement(x);
             actionMouse.perform();
             driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
             x.findElement(By.xpath("//*[contains(@data-tsid,\"track_add\")]")).click();
-            List<Music> MusicList=new ArrayList<Music>();
             driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-            WebElement MusicTitles= musicElement.findElement(By.xpath("//*[contains(@data-l,\"t,title\")]"));
-            WebElement MusicAuthors=musicElement.findElement(By.xpath("//top-tracks-list//*[contains(@data-l,\"t,artist\")]"));
-             WebElement MusicDuration=musicElement.findElement(By.xpath("//top-tracks-list//*[contains(@class,\"duration\")]"));
-            return  new Music(MusicTitles.getText(),MusicAuthors.getText(),MusicDuration.getText());
+            return  PopMusic.get(0);
         }
 }

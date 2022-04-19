@@ -1,10 +1,10 @@
 package ValueObjects;
 
 public class Music {
-    private String m_name;
-    private String m_duration;
-    private String m_author;
-    private boolean m_Explicted;
+    protected String m_name;
+    protected String m_duration;
+    protected String m_author;
+    protected boolean m_Explicted;
 
    public Music(String name, String author, String duration, boolean expc){
        m_name=name;
@@ -12,6 +12,9 @@ public class Music {
        m_duration=duration;
        m_Explicted=expc;
 
+
+   }
+   public Music(){
 
    }
     public Music(String name, String author, String duration){
@@ -25,9 +28,14 @@ return true;
        if(that==null)
            return false;
 
-     return music.m_name.equals(this.m_name)&&music.m_author.equals(this.m_author);//&&music.m_duration.equals(this.m_duration);
+     return music.m_name.equals(this.m_name)&&music.m_author.equals(this.m_author)&&music.m_duration.equals(this.m_duration);
 
     }
+    public void SetAuthor(String Author){m_author=Author;}
+
+    public void SetDuration(String Duration){m_duration=Duration;}
+    public void SetName(String Name){m_name=Name;}
+    public void SetExplicted(boolean Exp){m_Explicted=Exp;}
     public String GetAuthor(){
        return  m_author;
     }

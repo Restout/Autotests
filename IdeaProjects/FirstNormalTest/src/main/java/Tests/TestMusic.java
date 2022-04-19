@@ -19,8 +19,6 @@ public class TestMusic {
         MusicPage MP=mainpage.OpenMusicPage(driver);
         MP.CheckAddedTrack();
 
-
-
     }
 
 
