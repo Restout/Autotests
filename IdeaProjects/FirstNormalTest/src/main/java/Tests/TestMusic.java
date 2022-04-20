@@ -4,8 +4,10 @@ import Pages.LoginPage;
 import Pages.MainPage;
 import Pages.MusicPage;
 import ValueObjects.User;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 
 public class TestMusic {
     @Test
@@ -18,6 +20,8 @@ public class TestMusic {
         MainPage mainpage=loginPage.Login(user,driver);
         MusicPage MP=mainpage.OpenMusicPage(driver);
         MP.CheckAddedTrack();
+
+
 
     }
 

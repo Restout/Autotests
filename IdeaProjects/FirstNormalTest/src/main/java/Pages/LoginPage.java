@@ -23,6 +23,7 @@ public class LoginPage {
         driver.findElement(By.xpath(PAGE_PATHS.FieldPassword.xpath)).sendKeys(TestUser.GetUpassword());
         driver.findElement(By.xpath(PAGE_PATHS.LogButton.xpath)).click();
 
+
 return new MainPage();
     }
     public VkLogPage LoginByVK( WebDriver driver){
