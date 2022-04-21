@@ -24,7 +24,7 @@ public class LoginPage {
         driver.findElement(By.xpath(PAGE_PATHS.LogButton.xpath)).click();
 
 
-return new MainPage();
+return new MainPage(driver);
     }
     public VkLogPage LoginByVK( WebDriver driver){
         driver.findElement((By.xpath(PAGE_PATHS.VkLogButton.xpath))).click();

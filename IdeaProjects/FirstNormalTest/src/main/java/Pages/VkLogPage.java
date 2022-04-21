@@ -45,6 +45,6 @@ private String xpath;
     public MainPage LogIn(User user, WebDriver driver){
        switchToWindow(1,driver);
         driver.findElement(By.xpath(Page_Elements.TextField.xpath)).sendKeys(user.GetUlogin());
-        return new MainPage();
+        return new MainPage(driver);
     }
 }

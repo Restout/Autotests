@@ -3,10 +3,12 @@ package Tests.GroupTest;
 import Pages.LoginPage;
 import Pages.MainPage;
 import ValueObjects.User;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.chrome.ChromeDriver;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import  org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class NewGroupTest {
@@ -19,11 +21,13 @@ public class NewGroupTest {
 
         LoginPage loginPage=new LoginPage();
         MainPage main= loginPage.Login(user,driver);
-main.OpenGroups(driver).OpenCreatGroup()
+assertTrue(main.OpenGroups()
+        .OpenCreatGroup()
         .OpenCreationPage()
         .SetName()
         .ChoseTheme()
-        .CreatNewGroup();
+       .CreatNewGroup().CheckPage());
+
     }
     @BeforeEach
     public void IniDriver(){

@@ -1,4 +1,4 @@
-package Pages;
+package Pages.Group;
 
 import PageElemts.Groups.CreatGroupPage;
 import org.openqa.selenium.By;
@@ -15,7 +15,7 @@ public class GroupPage {
                 this.xpath = xpath;
             }
         }
-    GroupPage(WebDriver driver){
+    public GroupPage(WebDriver driver){
         this.driver=driver;
     }
 public CreatGroupPage OpenCreatGroup(){
